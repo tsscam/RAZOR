@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<br />
+<form action ="/Home/SearchByTitle" method="get">
+<input type="submit" value="Search by Title"/> &nbsp; <input type="text" name="Title"/>
+
+
+</form>
+
+<br />
+<br />
+
+<form action="/Home/SearchByCategory" method="get">
+<input type="submit" value="Search by Category" /> &nbsp;    
+        <select name="Category">
+        <option value=""></option>
+        <option value="Horror">Horror</option>
+        <option value="Horror">Horror</option>
+        <option value="Family">Family</option>
+        <option value="Drama">Drama</option>
+        <option value="Commedy">Commedy</option>
+        <option value="Sci Fi">Sci Fi</option>
+    </select>
+
+
+</form>
+
+<br />
+<br />
+
+<h1> @ViewBag.Message</h1>
+@if (ViewBag.MovieResult != null)
+{
+<h2> @ViewBag.MovieResult.Title</h2>
+<h2> @ViewBag.MovieResult.Category</h2>
+}
+
+@if (ViewBag.SearchResults != null)
+{
+    foreach (var item in ViewBag.SearchResults)
+    {
+        <h2>
+            @item.Title, @item.Category
+            
+        </h2>
+
+            
+    }
+
+}
